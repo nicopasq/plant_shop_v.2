@@ -7,14 +7,7 @@ wrap_parameters format: [];
     end
 
     def create
-        plant = Plant.create(
-            name: params[:name],
-            category: params[:category],
-            image:params[:image],
-            description:params[:description],
-            price:params[:price],
-            quantity:params[:quantity]
-        )
+        plant = Plant.create(plant_params)
         render json: plant, status: :created
     end
 
