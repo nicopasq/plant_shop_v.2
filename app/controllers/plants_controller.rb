@@ -29,6 +29,11 @@ wrap_parameters format: [];
         render json: plant, status: :accepted
     end
 
+    def destroy
+        plant = find_plant
+        plant.destroy
+        head :ok
+    end
 
 
     private
