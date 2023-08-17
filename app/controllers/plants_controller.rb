@@ -19,7 +19,7 @@ wrap_parameters format: [];
             render json: plant, status: :created
         else
             plant = Plant.find_by name: params[:name]
-            render json: {error:"Plant name already exists in position #{plant.id}"}, status: :conflict
+            render json: {error:"Plant name already exists with the index: #{plant.id}"}, status: :conflict
         end
     end
 
