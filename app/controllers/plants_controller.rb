@@ -14,8 +14,19 @@ wrap_parameters format: [];
     end
 
     def create
-        plant = Plant.create!(plant_params)
-        render json: plant, status: :created
+        if !Plant.find_by name: params[:name]
+            plant = Plant.create!(plant_params)
+            render json: plant, status: :created
+        else
+            plant = Plant.find_by name: params[:name]
+            render json: {error:"Plant name already exists in position #{plant.id}"}, status: :conflict
+        end
+    end
+
+    def update
+        plant = find_plant
+        plant.update(plant_params)
+        render json: plant, status: :accepted
     end
 
 
