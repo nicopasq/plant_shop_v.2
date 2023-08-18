@@ -34,8 +34,7 @@ wrap_parameters format: [];
         plant.destroy
         head :ok
     end
-
-
+    
     private
 
     def plant_params
@@ -51,6 +50,6 @@ wrap_parameters format: [];
     end
 
     def plant_not_found_message
-        render json: {error: "Plant could not be found."}
+        render json: {error: "Plant could not be found."}, status: 404
     end
 end
